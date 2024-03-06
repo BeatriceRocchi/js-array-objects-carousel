@@ -1,3 +1,4 @@
+const carouselContainer = document.querySelector(".my-carousel-container");
 const imagesWrapper = document.querySelector(".my-carousel-images");
 const thumbnailsWrapper = document.querySelector(".my-thumbnails-wrapper");
 const btnPrev = document.querySelector(".my-previous");
@@ -59,6 +60,9 @@ thumbnailsCollection[counterImages].classList.add("active");
 //Inserimento logica cambio immagine e thumbnails al click
 btnNext.addEventListener("click", goNext);
 btnPrev.addEventListener("click", goPrev);
+
+//Inserimento logica cambio immagine e thumbnails automatica
+autoplay = setInterval(goNext, 3000);
 
 // --- FUNCTIONS --- //
 function createTemplateImages(imgElement) {
