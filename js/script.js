@@ -3,7 +3,10 @@ const imagesWrapper = document.querySelector(".my-carousel-images");
 const thumbnailsWrapper = document.querySelector(".my-thumbnails-wrapper");
 const btnPrev = document.querySelector(".my-previous");
 const btnNext = document.querySelector(".my-next");
+const btnAutoplay = document.getElementById("mt-btn-autoplay");
+
 let counterImages = 0;
+let isAutoplay = false;
 
 const images = [
   {
@@ -62,7 +65,19 @@ btnNext.addEventListener("click", goNext);
 btnPrev.addEventListener("click", goPrev);
 
 //Inserimento logica cambio immagine e thumbnails automatica
-autoplay = setInterval(goNext, 3000);
+btnAutoplay.innerHTML = "Start" + " " + "autoplay";
+
+btnAutoplay.addEventListener("click", () => {
+  if (isAutoplay === false) {
+    isAutoplay = setInterval(goNext, 3000);
+    isAutoplay = true;
+    btnAutoplay.innerHTML = "Stop" + " " + "autoplay";
+  } else {
+    clearInterval(isAutoplay);
+    isAutoplay = false;
+    btnAutoplay.innerHTML = "Start" + " " + "autoplay";
+  }
+});
 
 // --- FUNCTIONS --- //
 function createTemplateImages(imgElement) {

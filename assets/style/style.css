@@ -40,6 +40,11 @@ div.my-next {
   right: 1rem;
 }
 
+div.my-next:hover,
+div.my-previous:hover {
+  background-color: white;
+}
+
 div.my-previous > span::after {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;

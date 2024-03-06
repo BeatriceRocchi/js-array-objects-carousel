@@ -31,4 +31,7 @@ Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.
 3. Creare un array di oggetti e, tramite un ciclo forEach, popolare dinamicamente il carosello
 4. Inserire in una collection tutti gli elementi creati e rendere attivo il primo elemento
 5. Creare la logica per lo scorrimento al click con ciclo infinito
+6. Aggiungere con setInterval la funzionalità autoplay ogni 3000ms
+7. Aggiungere bottone di start/stop della funzionalità autoplay
+8. Aggiungere bottone di inversione dell'autoplay
 
