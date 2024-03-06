@@ -7,17 +7,14 @@ div.my-carousel-container {
   min-width: 800px;
   max-width: 1350px;
   margin: 0 auto;
-  /* background-color: aquamarine; */
 }
 
 div.my-carousel-images {
-  /* background-color: cadetblue; */
   height: 540px;
   border: 1px solid;
 }
 
 div.my-thumbnails {
-  /* background-color: violet; */
   height: 160px;
   border: 1px solid;
 }

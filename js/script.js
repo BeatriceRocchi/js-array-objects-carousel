@@ -1,5 +1,7 @@
 const imagesWrapper = document.querySelector(".my-carousel-images");
 const thumbnailsWrapper = document.querySelector(".my-thumbnails-wrapper");
+const btnPrev = document.querySelector(".my-previous");
+const btnNext = document.querySelector(".my-next");
 let counterImages = 0;
 
 const images = [
@@ -37,11 +39,11 @@ const images = [
   },
 ];
 
-//Eliminazione contenuto statico del carosello (slider + thumbnails)
+//Eliminazione contenuto statico del carosello (immagine + thumbnails)
 imagesWrapper.innerHTML = "";
 thumbnailsWrapper.innerHTML = "";
 
-//Popolamento dinamico del carosello (slider + thumbnails)
+//Popolamento dinamico del carosello (immagine + thumbnails)
 images.forEach((image) => {
   imagesWrapper.innerHTML += createTemplateImages(image);
   thumbnailsWrapper.innerHTML += createTemplateThumbnails(image);
@@ -53,6 +55,10 @@ imagesCollection[counterImages].classList.add("active");
 
 const thumbnailsCollection = document.querySelectorAll(".my-thumbnail");
 thumbnailsCollection[counterImages].classList.add("active");
+
+//Inserimento logica cambio immagine e thumbnails al click
+btnNext.addEventListener("click", goNext);
+btnPrev.addEventListener("click", goPrev);
 
 // --- FUNCTIONS --- //
 function createTemplateImages(imgElement) {
@@ -81,4 +87,21 @@ function createTemplateThumbnails(thumbElement) {
     />
   </div>
   `;
+}
+
+function goNext() {
+  changeActiveStatus(counterImages);
+  counterImages === images.length - 1 ? (counterImages = 0) : counterImages++;
+  changeActiveStatus(counterImages);
+}
+
+function goPrev() {
+  changeActiveStatus(counterImages);
+  counterImages === 0 ? (counterImages = images.length - 1) : counterImages--;
+  changeActiveStatus(counterImages);
+}
+
+function changeActiveStatus(counter) {
+  imagesCollection[counter].classList.toggle("active");
+  thumbnailsCollection[counter].classList.toggle("active");
 }

@@ -30,5 +30,5 @@ Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.
 2. Svuotare il contenuto del markup statico (slider e thumbnails)
 3. Creare un array di oggetti e, tramite un ciclo forEach, popolare dinamicamente il carosello
 4. Inserire in una collection tutti gli elementi creati e rendere attivo il primo elemento
-5. Creare la logica per lo scorrimento al click
+5. Creare la logica per lo scorrimento al click con ciclo infinito
 
