@@ -86,24 +86,24 @@ div.item-description {
   text-shadow: 2px 2px 2px black;
 }
 
-div#my-carousel .my-thumbnails {
+div#my-carousel .my-thumbnails-wrapper {
   flex-basis: 20%;
   height: 100%;
   display: flex;
   overflow-x: auto;
-  position: relative;
 }
 
-div#my-carousel .my-thumbnails .my-thumbnail {
+div#my-carousel .my-thumbnails-wrapper .my-thumbnail {
   filter: brightness(0.4);
+  width: 100%;
 }
 
-div#my-carousel .my-thumbnails .my-thumbnail img {
+div#my-carousel .my-thumbnails-wrapper .my-thumbnail img {
   height: 100%;
   width: 100%;
 }
 
-div#my-carousel .my-thumbnails .my-thumbnail.active {
+div#my-carousel .my-thumbnails-wrapper .my-thumbnail.active {
   filter: brightness(1);
   border: 3px rgb(197, 197, 197) solid;
 }

@@ -1,3 +1,7 @@
+const imagesWrapper = document.querySelector(".my-carousel-images");
+const thumbnailsWrapper = document.querySelector(".my-thumbnails-wrapper");
+let counterImages = 0;
+
 const images = [
   {
     url: "http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg",
@@ -32,3 +36,49 @@ const images = [
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.",
   },
 ];
+
+//Eliminazione contenuto statico del carosello (slider + thumbnails)
+imagesWrapper.innerHTML = "";
+thumbnailsWrapper.innerHTML = "";
+
+//Popolamento dinamico del carosello (slider + thumbnails)
+images.forEach((image) => {
+  imagesWrapper.innerHTML += createTemplateImages(image);
+  thumbnailsWrapper.innerHTML += createTemplateThumbnails(image);
+});
+
+//Inserimento degli elementi creati in collection
+const imagesCollection = document.querySelectorAll(".my-carousel-item");
+imagesCollection[counterImages].classList.add("active");
+
+const thumbnailsCollection = document.querySelectorAll(".my-thumbnail");
+thumbnailsCollection[counterImages].classList.add("active");
+
+// --- FUNCTIONS --- //
+function createTemplateImages(imgElement) {
+  return `
+  <div class="my-carousel-item">
+    <img
+      class="img-fluid"
+      src="${imgElement.url}"
+      alt="${imgElement.title} picture"
+    />
+    <div class="item-description px-3">
+      <h2>${imgElement.title}</h2>
+      <p>${imgElement.description}</p>
+    </div>
+  </div>
+  `;
+}
+
+function createTemplateThumbnails(thumbElement) {
+  return `
+  <div class="my-thumbnail">
+    <img
+      class="img-fluid"
+      src="${thumbElement.url}"
+      alt="Thumbnail of ${thumbElement.title} picture"
+    />
+  </div>
+  `;
+}
