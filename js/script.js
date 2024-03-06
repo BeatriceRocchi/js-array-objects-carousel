@@ -3,10 +3,13 @@ const imagesWrapper = document.querySelector(".my-carousel-images");
 const thumbnailsWrapper = document.querySelector(".my-thumbnails-wrapper");
 const btnPrev = document.querySelector(".my-previous");
 const btnNext = document.querySelector(".my-next");
-const btnAutoplay = document.getElementById("mt-btn-autoplay");
+const btnAutoplay = document.getElementById("my-btn-autoplay");
+const btnDirection = document.getElementById("my-btn-direction");
 
 let counterImages = 0;
 let isAutoplay = false;
+let autoplay;
+let directionNext = true;
 
 const images = [
   {
@@ -64,20 +67,25 @@ thumbnailsCollection[counterImages].classList.add("active");
 btnNext.addEventListener("click", goNext);
 btnPrev.addEventListener("click", goPrev);
 
-//Inserimento logica cambio immagine e thumbnails automatica
+//Inserimento logica cambio immagine e thumbnails con autoplay tramite start/stop
 btnAutoplay.innerHTML = "Start" + " " + "autoplay";
 
 btnAutoplay.addEventListener("click", () => {
+  console.log("Autoplay prima: ", isAutoplay);
   if (isAutoplay === false) {
-    isAutoplay = setInterval(goNext, 3000);
+    autoplay = setInterval(directionAutoplay, 3000);
     isAutoplay = true;
     btnAutoplay.innerHTML = "Stop" + " " + "autoplay";
-  } else {
-    clearInterval(isAutoplay);
+  } else if (isAutoplay === true) {
+    clearInterval(autoplay);
     isAutoplay = false;
     btnAutoplay.innerHTML = "Start" + " " + "autoplay";
   }
+  console.log("Autoplay dopo: ", isAutoplay);
 });
+
+//Inserimento logica cambio direzione autoplay
+btnDirection.addEventListener("click", () => (directionNext = !directionNext));
 
 // --- FUNCTIONS --- //
 function createTemplateImages(imgElement) {
@@ -123,4 +131,8 @@ function goPrev() {
 function changeActiveStatus(counter) {
   imagesCollection[counter].classList.toggle("active");
   thumbnailsCollection[counter].classList.toggle("active");
+}
+
+function directionAutoplay() {
+  directionNext ? goNext() : goPrev();
 }
