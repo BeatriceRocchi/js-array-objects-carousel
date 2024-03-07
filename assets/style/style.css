@@ -99,7 +99,8 @@ div#my-carousel .my-thumbnails-wrapper .my-thumbnail img {
   width: 100%;
 }
 
-div#my-carousel .my-thumbnails-wrapper .my-thumbnail.active {
+div#my-carousel .my-thumbnails-wrapper .my-thumbnail.active,
+div#my-carousel .my-thumbnails-wrapper .my-thumbnail:hover {
   filter: brightness(1);
   border: 3px rgb(197, 197, 197) solid;
 }

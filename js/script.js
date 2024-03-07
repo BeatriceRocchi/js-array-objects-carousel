@@ -67,6 +67,11 @@ thumbnailsCollection[counterImages].classList.add("active");
 btnNext.addEventListener("click", goNext);
 btnPrev.addEventListener("click", goPrev);
 
+//Inserimento logica cambio immagine e thumbnails al click su thumbnails
+thumbnailsCollection.forEach((thumb, i) => {
+  thumb.addEventListener("click", () => changeImg(i));
+});
+
 //Inserimento logica cambio immagine e thumbnails con autoplay tramite start/stop
 btnAutoplay.innerHTML = "Start" + " " + "autoplay";
 
@@ -117,15 +122,15 @@ function createTemplateThumbnails(thumbElement) {
 }
 
 function goNext() {
-  changeActiveStatus(counterImages);
-  counterImages === images.length - 1 ? (counterImages = 0) : counterImages++;
-  changeActiveStatus(counterImages);
+  let indexImg = counterImages;
+  indexImg === images.length - 1 ? (indexImg = 0) : indexImg++;
+  changeImg(indexImg);
 }
 
 function goPrev() {
-  changeActiveStatus(counterImages);
-  counterImages === 0 ? (counterImages = images.length - 1) : counterImages--;
-  changeActiveStatus(counterImages);
+  let indexImg = counterImages;
+  indexImg === 0 ? (indexImg = images.length - 1) : indexImg--;
+  changeImg(indexImg);
 }
 
 function changeActiveStatus(counter) {
@@ -135,4 +140,10 @@ function changeActiveStatus(counter) {
 
 function directionAutoplay() {
   directionNext ? goNext() : goPrev();
+}
+
+function changeImg(index) {
+  changeActiveStatus(counterImages);
+  counterImages = index;
+  changeActiveStatus(counterImages);
 }
